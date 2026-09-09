@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> <!----all meta stuff outside of the main experience --->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="rgpFavicon16.png" sizes="16x16">
@@ -8,6 +8,107 @@
     <link rel="icon" href="rgpFavicon48.png" sizes="48x48">
     <link rel="apple-touch-icon" href="rgpFavicon180.png" sizes="180x180">
     <title>Regular Pleasure</title>
+
+<!----//////////////////////1.0 --->
+
+<!----//STYLE --->
+
+<style>
+        body{
+            margin: 0;
+            text-align: center;
+            background: black;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            }
+        img {
+            max-width: 95%;
+            height: auto;
+            }
+        a {
+            color: white;
+             font-size: 25px;
+            }
+        .column-container {
+             display: flex;       /* Activates the flexbox layout */
+             gap: 5px;          /* Adds space between your columns */
+            }
+
+        .column {
+            flex: 1;            /* Forces both columns to take up equal width */
+            padding: 5px;      /* Adds inner spacing for readability * to see the columns */
+            }
+</style>
+
+<!----//column creation --->
+<div class="column-container">
+
+  <div class="column">
+    <!----logo division --->
+    <a href="https://regularpleasure.bandcamp.com">
+        <img src="rgpNewLogo.gif" style="width: 90%; height: auto;" alt="Regular Pleasure Logo">
+    </a><br>
+    <p> alt pop brainrot rock queer heavy metal.</p>
+    <!--- play audio-->
+     <audio id="song" src="omegaMale.mp3"></audio>
+    <!---button--->
+    <div style="text-align: center;">
+        <button onclick="document.getElementById('song').play()">
+            play song.
+        </button>
+    </div>
+
+    <!----//link division --->
+    <div style="height: 15px;"></div>
+    <div style="text-align: right;"></div>
+    <a href="https://regularpleasure.bandcamp.com";>music.</a><br>
+    <a href="https://instagram.com/regular_pleasure">instagram.</a><br>
+    <a href="shows.html">shows.</a><br>
+    <a href="https://instagram.com/regular_pleasure">videos.</a><br>
+    <a href="https://instagram.com/regular_pleasure">nathan.</a><br>
+    <a href="https://instagram.com/regular_pleasure">max.</a><br>
+    <a href="https://instagram.com/regular_pleasure">hotline.</a>
+  </div>
+  
+  <div class="column">
+    <!----//ticket link division --->
+    <div style="text-align: center;"></div>
+    <div style="font-size: 50px; text-align: center;"></div>
+    <a href="https://www.eventbrite.com/e/sudwerk-breiwng-concert-series-regular-pleasure-rock-stage-play-tickets-2000281785667">
+        <img src="bannerCaution.gif" alt="caution."><br>
+        </a><br>
+    <a href="https://www.eventbrite.com/e/sudwerk-breiwng-concert-series-regular-pleasure-rock-stage-play-tickets-2000281785667">
+        <img src="bannerBuyTickets.png" alt="buy tickets.">
+        </a><br>
+    <a href="https://www.eventbrite.com/e/sudwerk-breiwng-concert-series-regular-pleasure-rock-stage-play-tickets-2000281785667">
+        <img src="bannerCaution.gif" alt="caution."><br>
+    </a><br>
+
+    <!----//band pic division --->
+    <img src="rgpNewPfp.gif" alt="pfp.">
+
+
+  </div>
+  
+</div><br>
+
+<!--- space and then zap banner-->
+
+
+     <footer style="text-align: left;">
+        <div style="height:50px;"></div>
+        <p >© 2026 Regular Pleasure. All rights reserved.</p>
+        <p >brought to you by:</p>
+        <img  src="zapLogo.png" style="height:50px;">
+    </footer>
+</body>
+</html>
+
+
+
+
+
+ <!----////////////////////////////0.0 --->
    <!-- <style>
         body {
             margin: 0;
@@ -23,7 +124,7 @@
             height: auto;
         }
     </style>-->
-<style>
+<!--<style>
         body{
             margin: 0;
             text-align: center;
@@ -47,6 +148,7 @@
     <audio id="song" src="omegaMale.mp3"></audio>
     <div style="height: 20px;"></div>
     <img src="rgpNewLogo.png" alt="Regular Pleasure Logo">
+    //button division
     <div style="text-align: center;">
         <button onclick="document.getElementById('song').play()">
             sound on.

@@ -20,14 +20,12 @@
        
        /* Container to style and center your game canvas */
         .game-container {
-            width: 90%;
+            width: 100%;
             max-width: 900px; /* Match your GameMaker game's target resolution */
             height: 768px;    /* Match your GameMaker game's target resolution */
             margin: 0 auto;
             border: 2px solid #333;
             box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-              overflow: hidden;
-    -webkit-overflow-scrolling: touch; 
         }
 
         /* Makes the iframe responsive inside the container */
@@ -40,6 +38,7 @@
     </style>
 </head>
 <body>
+
     <!-- Link back to the homepage -->
     <p><a href="index.html">back.</a></p>
     <!-- Game Embedding Section -->
@@ -47,6 +46,20 @@
         <!-- Adjust the src path to point to your exported game's index file -->
         <iframe src="hotline/index.html" allowfullscreen></iframe>
     </div>
+
+<!-- audio bypass  -->
+    <script>
+        window.addEventListener('click', function unlockIOSAudio() {
+            const silentAudio = new Audio();
+            silentAudio.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
+            silentAudio.loop = true;
+            silentAudio.play()
+                .then(() => console.log("iOS silent switch successfully bypassed."))
+                .catch(err => console.log("Audio bypass failed:", err));
+            
+            window.removeEventListener('click', unlockIOSAudio);
+        }, { once: true });
+    </script>
 
 </body>
 </html>

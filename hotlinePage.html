@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!----all meta stuff outside of the main experience --->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="rgpFavicon16.png" sizes="16x16">
+    <link rel="icon" href="rgpFavicon32.png" sizes="32x32">
+    <link rel="icon" href="rgpFavicon48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="rgpFavicon180.png" sizes="180x180">
+    <title>hotline.</title>
+
+<style>
+               body{
+            margin: 0;
+            text-align: center;
+            background: black;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            }
+       
+       /* Container to style and center your game canvas */
+        .game-container {
+            width: 100%;
+            max-width: 960px; /* Match your GameMaker game's target resolution */
+            height: 540px;    /* Match your GameMaker game's target resolution */
+            margin: 0 auto;
+            border: 2px solid #333;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Makes the iframe responsive inside the container */
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block; /* */
+        }
+    </style>
+</head>
+<body>
+    <!-- Link back to the homepage -->
+    <p><a href="index.html">back.</a></p>
+    <!-- Game Embedding Section -->
+    <div class="game-container">
+        <!-- Adjust the src path to point to your exported game's index file -->
+        <iframe src="RGPhotlineFolder/index.html" allowfullscreen></iframe>
+    </div>
+
+</body>
+</html>

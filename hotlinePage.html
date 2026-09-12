@@ -47,19 +47,44 @@
         <iframe src="hotline/index.html" allowfullscreen></iframe>
     </div>
 
-<!-- audio bypass  -->
-    <script>
-        window.addEventListener('click', function unlockIOSAudio() {
-            const silentAudio = new Audio();
-            silentAudio.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
-            silentAudio.loop = true;
-            silentAudio.play()
-                .then(() => console.log("iOS silent switch successfully bypassed."))
-                .catch(err => console.log("Audio bypass failed:", err));
+<!-- iOS Silent Switch Audio Bypass -->
+<script>
+    window.addEventListener('click', function unlockIOSAudio() {
+        // 1. Create and play HTML5 Audio (Media Channel)
+        const silentAudio = new Audio();
+        // A valid 1-second silent MP3 base64 string works more reliably than WAV on some iOS versions
+        silentAudio.src = "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGFtZTMuOTguNFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/4MUAZAAAAGGAAAAnwAIsAAAAnwAAAEVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+        silentAudio.loop = true;
+        
+        // Prevent AirPlay popup glitches on the lock screen
+        silentAudio.setAttribute("x-webkit-airplay", "deny"); 
+
+        // 2. Initialize and trigger the Web Audio API Context (Ringer Channel)
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+            const ctx = new AudioContext();
             
-            window.removeEventListener('click', unlockIOSAudio);
-        }, { once: true });
-    </script>
+            // Create a temporary silent oscillator to kickstart the AudioContext
+            const buffer = ctx.createBuffer(1, 1, 22050);
+            const source = ctx.createBufferSource();
+            source.buffer = buffer;
+            source.connect(ctx.destination);
+            
+            // Resume context if suspended (common iOS policy)
+            if (ctx.state === 'suspended') {
+                ctx.resume();
+            }
+            source.start(0);
+        }
+
+        // Play the HTML5 background audio to force the media channel route
+        silentAudio.play()
+            .then(() => console.log("iOS silent switch successfully bypassed."))
+            .catch(err => console.log("Audio bypass failed:", err));
+        
+        // Clean up event listener
+    }, { once: true });
+</script>
 
 </body>
 </html>

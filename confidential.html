@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!----all meta stuff outside of the main experience --->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="rgpFavicon16.png" sizes="16x16">
+    <link rel="icon" href="rgpFavicon32.png" sizes="32x32">
+    <link rel="icon" href="rgpFavicon48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="rgpFavicon180.png" sizes="180x180">
+    <title>confidential</title>
+<style>
+    body{
+        margin: 0;
+        text-align: center;
+        background: white;
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+        }
+    .secrets{
+        display: none;
+        margin-top: 5px;
+        padding: 5px;
+        color: black;
+        background-color: #ffffff;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        }
+    .media-item{
+        margin-bottom: 5px;
+        }
+    img {
+        max-width: 95%;
+        height: auto;
+        border-radius: 4px;
+        }
+</style>
+</head>
+
+<body>
+    <br><br><br>
+    <input type="password" id="passcodeBox" placeholder="passcode.">
+    <button onclick="checkPasscode()">submit.</button>
+    <!--- secrets section --->
+    <div id="confidential" class="secrets">
+         <p>secret singles.</p><br>
+        
+         <!--- bad metaphor --->
+        <div class="media-item">
+            <img src="rgpBadMetaphorCover.png" alt="Bad Metaphor cover." width="300">
+        </div>
+        <div class="media-item">
+            <audio controls>
+                <source src="songBadMetaphor.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+<br><br><br><br>
+        <!---  sharing -->
+        <div class="media-item">
+            <img src="rgpSharingCover.png" alt="Sharing cover." width="300">
+        </div>
+        <div class="media-item">
+            <audio controls>
+                <source src="songSharing.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <!----- js program --->
+    <script>
+        function checkPasscode() {
+            const passcode = document.getElementById('passcodeBox').value;
+            const confidentialSection = document.getElementById('confidential');
+            if(passcode === '111222') { 
+                confidentialSection.style.display = 'block';
+            } else {
+                alert('wrong.');
+                confidentialSection.style.display = 'none';
+            }
+        }
+    </script>
+
+ <!-- Link back to the homepage -->
+  <br><br><br>
+ <p><a href="index.html">back.</a></p>
+
+</body>
+
+</html>
+
+ <!---- 1.0
+    <style>
+        body{
+            margin: 0;
+            text-align: center;
+            background:white;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+            padding-top:30px;
+            }
+        .box{
+            background: white;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 8px;
+            /*box-shadow: 0px 4px 8px rgba(0,0,0,0.1);*/
+    
+ /*       input[type="password"]{
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #a2a2a2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+        button:hover{
+            background-color: #606161;
+            }
+        #secrets{
+            display: none;
+            margin-top: 20px;
+            color: black;
+            font-weight: bold;
+            }
+    </style>
+    </head>
+
+<body>
+
+
+
+
+    <div class="box">
+        <input type="password" id="passwordInput" placeholder="password.">
+        <button onclick="checkPassword()">submit.</button>
+        <p id="secrets"> secrets. </p><br>
+        <audio  src="songBadMetaphor.mp3" controls>Your browser does not support the audio element.</audio>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const secrets = document.getElementById('secrets');
+            if(password === '111222') { 
+                secrets.style.display = 'block';
+            } else {
+                alert('wrong.');
+                secrets.style.display = 'none';
+            }
+        }
+ // </script>
+</body>
+</html> 

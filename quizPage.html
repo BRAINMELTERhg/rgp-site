@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!----all meta stuff outside of the main experience --->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="rgpFavicon16.png" sizes="16x16">
+    <link rel="icon" href="rgpFavicon32.png" sizes="32x32">
+    <link rel="icon" href="rgpFavicon48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="rgpFavicon180.png" sizes="180x180">
+    <title>hotline.</title>
+
+<style>
+               body{
+            margin: 0;
+            text-align: center;
+            background: black;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            }
+       
+       /* Container to style and center your game canvas */
+        .game-container {
+            width: 100%;
+            max-width: 360px; /* Match your GameMaker game's target resolution */
+            height: 710px;    /* Match your GameMaker game's target resolution */
+            margin: 0 auto;
+            border: 2px solid #333;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Makes the iframe responsive inside the container */
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block; /* */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Link back to the homepage -->
+    <p><a href="index.html">back.</a></p>
+    <p>*switch phone off silent.</p>
+    <!-- Game Embedding Section -->
+    <div class="game-container">
+        <!-- Adjust the src path to point to your exported game's index file -->
+        <iframe src="characterQuiz/index.html" allowfullscreen></iframe>
+    </div>
+
+<!-- iOS Silent Switch Audio Bypass -->
+<script>
+    window.addEventListener('click', function unlockIOSAudio() {
+        // 1. Create and play HTML5 Audio (Media Channel)
+        const silentAudio = new Audio();
+        // A valid 1-second silent MP3 base64 string works more reliably than WAV on some iOS versions
+        silentAudio.src = "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGFtZTMuOTguNFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/4MUAZAAAAGGAAAAnwAIsAAAAnwAAAEVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+        silentAudio.loop = true;
+        
+        // Prevent AirPlay popup glitches on the lock screen
+        silentAudio.setAttribute("x-webkit-airplay", "deny"); 
+
+        // 2. Initialize and trigger the Web Audio API Context (Ringer Channel)
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+            const ctx = new AudioContext();
+            
+            // Create a temporary silent oscillator to kickstart the AudioContext
+            const buffer = ctx.createBuffer(1, 1, 22050);
+            const source = ctx.createBufferSource();
+            source.buffer = buffer;
+            source.connect(ctx.destination);
+            
+            // Resume context if suspended (common iOS policy)
+            if (ctx.state === 'suspended') {
+                ctx.resume();
+            }
+            source.start(0);
+        }
+
+        // Play the HTML5 background audio to force the media channel route
+        silentAudio.play()
+            .then(() => console.log("iOS silent switch successfully bypassed."))
+            .catch(err => console.log("Audio bypass failed:", err));
+        
+        // Clean up event listener
+    }, { once: true });
+</script>
+
+</body>
+</html>

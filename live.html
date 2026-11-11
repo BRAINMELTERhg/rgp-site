@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="rgpFavicon16.png" sizes="16x16">
+    <link rel="icon" href="rgpFavicon32.png" sizes="32x32">
+    <link rel="icon" href="rgpFavicon48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="rgpFavicon180.png" sizes="180x180">
+    <title>live.</title>
+</head>
+
+
+
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      text-align: left;
+        background: black;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+      padding: 0;
+      height: 100dvh;
+      overflow-x: auto;   /* Enables horizontal scrolling inside this column */
+      overflow-y: hidden; /* Prevents the main page from scrolling */
+      -webkit-overflow-scrolling: touch; /* Smooth iOS momentum swiping */
+    }
+
+    a {
+        color: white;
+        font-size: 25px;
+            }
+
+    .page-wrapper {
+      display: flex;
+      height: 100dvh;
+      width: 100vw;
+    }
+
+    /* Left Column: Scrolls off-screen as you swipe right */
+    .left-column {
+      width: 240px; /* Adjust width as needed */
+      height: 100dvh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex-shrink: 0; /* Prevents the column from getting squished */
+    }
+
+    .logo {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* Right Column: Full-height wide image */
+    .right-column {
+      height: 100dvh;
+      flex-shrink: 0;
+      background-color: #000;
+    }
+
+    .wide-image {
+      height: 100dvh; /* Fills the exact vertical screen height */
+      width: auto;    /* Keeps aspect ratio and extends horizontally */
+      max-width: none; /* Prevents shrinking on mobile */
+      display: block;
+    }
+
+    .tiled-divider {
+        background-image: url("bannerCaution.gif"); 
+        background-repeat: repeat-x; 
+        height: 20px; 
+        width: 100%;  
+        }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="page-wrapper">
+    <!-- Left Column -->
+    <aside class="left-column">
+      <div>
+        <img src="liveTitle.jpg" alt="live." class="logo">
+        <div class="tiled-divider"></div><br>
+
+            <!--- play audio-->
+    
+     <audio id="song" src="songInstantPleasure.wav"></audio>
+    <!---button--->
+    <div style="text-align: center;">
+        <button onclick="document.getElementById('song').play()">
+            play song.
+        </button>
+    </div>
+
+        <p>our live show is actually crazy. scroll to the right for proof.</p>
+        <a href="index.html"> back.</a>
+      </div>
+    </aside>
+
+    <!-- Right Column -->
+    <main class="right-column">
+      <img src="livePanorama.jpg" alt="live." class="wide-image">
+    </main>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
